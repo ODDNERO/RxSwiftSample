@@ -13,6 +13,9 @@
 		CE6763232C59099F00D0B6CA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE6763222C59099F00D0B6CA /* Base */; };
 		CE6763252C5909A200D0B6CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6763242C5909A200D0B6CA /* Assets.xcassets */; };
 		CE6763282C5909A200D0B6CA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CE6763272C5909A200D0B6CA /* Base */; };
+		CE6763312C59128900D0B6CA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE6763302C59128900D0B6CA /* SnapKit */; };
+		CE6763342C59153F00D0B6CA /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CE6763332C59153F00D0B6CA /* RxCocoa */; };
+		CE6763362C59153F00D0B6CA /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE6763352C59153F00D0B6CA /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6763362C59153F00D0B6CA /* RxSwift in Frameworks */,
+				CE6763342C59153F00D0B6CA /* RxCocoa in Frameworks */,
+				CE6763312C59128900D0B6CA /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,11 @@
 			dependencies = (
 			);
 			name = RxSwiftSample;
+			packageProductDependencies = (
+				CE6763302C59128900D0B6CA /* SnapKit */,
+				CE6763332C59153F00D0B6CA /* RxCocoa */,
+				CE6763352C59153F00D0B6CA /* RxSwift */,
+			);
 			productName = RxSwiftSample;
 			productReference = CE6763182C59099F00D0B6CA /* RxSwiftSample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,10 @@
 				Base,
 			);
 			mainGroup = CE67630F2C59099E00D0B6CA;
+			packageReferences = (
+				CE67632F2C59128900D0B6CA /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CE6763322C59153F00D0B6CA /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = CE6763192C59099F00D0B6CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +376,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE67632F2C59128900D0B6CA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		CE6763322C59153F00D0B6CA /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE6763302C59128900D0B6CA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE67632F2C59128900D0B6CA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CE6763332C59153F00D0B6CA /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6763322C59153F00D0B6CA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CE6763352C59153F00D0B6CA /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6763322C59153F00D0B6CA /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE6763102C59099E00D0B6CA /* Project object */;
 }
