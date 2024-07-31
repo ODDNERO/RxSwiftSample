@@ -33,6 +33,7 @@ final class ViewController: UIViewController {
     
     private func transform() {
         setupPickerView()
+        setupTableView()
     }
 }
 
@@ -60,6 +61,34 @@ extension ViewController {
         tableViewToggleSwitch.rx.isOn
             .bind(to: contentTableView.rx.isHidden)
             .disposed(by: disposeBag)
+    }
+    
+    private func setupTableView() {
+        titles
+            .bind(to: contentTableView.rx.items(cellIdentifier: "Cell")) { _, element, cell in
+                cell.textLabel?.text = element
+            }
+            .disposed(by: disposeBag)
+        
+//        titlePickerView.rx.itemSelected
+//            .bind { value in //value == didSelect IndexPath
+//                print(value)
+//            }
+//            .disposed(by: disposeBag)
+//        
+//        titlePickerView.rx.modelSelected(String.self) //Data Type
+//            .bind { value in //value == didSelect Data
+//                print(value)
+//            }
+//            .disposed(by: disposeBag)
+//        
+        
+        //itemSelected, modelSelected를 한 번에 넣어 주는 법
+        Observable.zip(titlePickerView.rx.itemSelected, titlePickerView.rx.modelSelected(String.self))
+            .bind { value in //value == (IndexPath, Data)
+                print(value.0, value.1)
+            }
+            .disposed(by: disposeBag) //모든 dispose들을 한 번에 끊어 줌
     }
 }
 
@@ -235,36 +264,5 @@ extension ViewController {
             } onDisposed: {
                 print("Disposed")
             }.disposed(by: disposeBag) //구독 끊음
-    }
-}
-
-
-
-
-//텍스트필드에 입력한 텍스트
-//버튼 누르면
-//피커뷰 타이틀에 추가
-//스위치 토글하면 테이블뷰 isHidden 토글
-
-
-
-
-import SwiftUI
-
-struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = ViewController
-    
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        return UIViewControllerType()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    }
-}
-
-@available(iOS 13.0.0, *)
-struct ViewPreview: PreviewProvider {
-    static var previews: some View {
-        ViewControllerRepresentable()
     }
 }
